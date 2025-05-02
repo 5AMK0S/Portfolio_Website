@@ -12,6 +12,24 @@
 
 </head>
 <body>
+  <div id="custom-cursor" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  background-image: url('assets/img/float.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease-out;
+  opacity: 0.8;
+"></div>
+
+
 <div class="device-notification">
   <a class="device-notification--logo" href="#0">
     <img src="assets/img/logo.png" alt="Global">
@@ -27,9 +45,10 @@
               <a class="header--logo" href="#0">
                 <img src="assets/img/logo.png" width="200" alt="SamKos" style="padding-top: 30px;">
               </a>
-              <div class="header--nav-toggle">
-                <span></span>
-              </div>
+                <button class="header--cta">Contact Me</button>
+                <div class="header--nav-toggle">
+                  <span></span>
+                </div>
             </header>
             <div class="scroll-indicator-wrapper" style="position: relative;">
               <div class="scroll-indicator"></div>
@@ -38,7 +57,7 @@
                   <li class="is-active"><span>Home</span></li>
                   <li><span>About Me</span></li>
                   <li><span>Selected works</span></li>
-                  <li><span>Testimonials</span></li>
+                  <!-- <li><span>Testimonials</span></li> -->
                   <li><span>Contact me</span></li>
                 </ul>
               </nav>
@@ -50,7 +69,7 @@
           <div class="intro--banner">
             <h1>HI I'am<br>Samuel</h1>
             <h2>AI and Data Engineering Student -Nyp year 3</h2>
-            <button class="cta">Contact me
+            <button class="cta">Resume
               <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
               <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
                 <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
@@ -58,8 +77,8 @@
               </svg>
               <span class="btn-background"></span>
             </button>
-
-            <img src="assets/img/man.png" height="500" alt="Welcome" class="background-image">
+            <img src="assets/img/simle.gif" height="500" alt="Welcome" class="background-image">
+            <p class="intro--clickme">Click me to see my resume</p>
           </div>
           <div class="intro--options">
             <a href="#0">
@@ -81,27 +100,49 @@
 
               
   <div class="animatedbackground">
-    <li class="l-section section">
-      <div class="about">
-        <div class="about--lockup" style="display: flex; align-items: flex-start; gap: 60px; flex-wrap: wrap; max-width: 1000px; margin: auto;">
-          <div class="about--image" style="flex: 1; min-width: 300px;">
-            <img src="assets/img/me.jpg" alt="Samuel Kosasih" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+    <li class="l-section secabout">
+      <section id="aboutsec">
+        <div class="about--lockup" style="display: flex; align-items: flex-start; gap: 30px; flex-wrap: wrap; max-width: 100%; margin: auto;">
+          <div style="flex: 1; min-width: 30%; position: relative; height: 250px;">
+            <img src="assets/img/ws.jpeg" alt="SamKos"
+                 class="hover-img" style="top: -20%; left: 45%;  z-index: 1;">
+          
+            <img src="assets/img/mecarrie.jpeg" alt="AI"
+                 class="hover-img" style="bottom: -70%; left: 5%; z-index: 2;">
+          
+            <img src="assets/img/me.jpg" alt="Samuel Kosasih"
+                 class="hover-img" style="bottom: -150%; right: 0; z-index: 3;">
           </div>
-          <div class="about--text" style="flex: 2; min-width: 300px;">
-            <h2 style="font-size: 48px; margin-bottom: 20px;">About Me</h2>
-            <p style="font-size: 18px; line-height: 1.8; margin-bottom: 16px;">I'm a passionate AI and Data Engineering student with a strong foundation in programming and data analysis. I enjoy solving complex problems and creating innovative solutions using the latest technologies.</p>
-            <p style="font-size: 18px; line-height: 1.8; margin-bottom: 16px;">My goal is to leverage my skills in AI and data engineering to make a positive impact in the world. I'm always eager to learn new things and take on new challenges.</p>
-            <p style="font-size: 18px; line-height: 1.8; margin-bottom: 16px;">In my free time, I enjoy working on personal projects, contributing to open-source initiatives, and staying up-to-date with the latest trends in technology.</p>
-            <p style="font-size: 18px; line-height: 1.8;">Feel free to reach out if you have any questions or if you'd like to collaborate on a project!</p>
-          </div>
+          <div class="about--text" style="
+          flex: 2;
+          min-width: 60%;
+          background: white;
+          padding: 30px;
+          border-radius: 16px;
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        ">
+          <h2 style="font-size: 48px; margin-bottom: 20px;">About Me</h2>
+          <p style="font-size: 18px; line-height: 1.8; margin-bottom: 16px;">
+            I'm someone who loves building, tinkering, and experimenting — especially with open-source software, single board computers, and microcontrollers. I'm currently diving deep into AI and data engineering, and I’m always exploring new ways to combine hardware and software in creative ways.
+          </p>
+          <p style="font-size: 18px; line-height: 1.8; margin-bottom: 16px;">
+            I enjoy helping friends build and train their AI models, and I often get involved in collaborative projects where I can share what I know and learn something new in the process.
+          </p>
+          <p style="font-size: 18px; line-height: 1.8; margin-bottom: 16px;">
+            In my free time, you’ll usually find me 3D printing parts for a custom build, flashing firmware onto microcontrollers, or testing out new open-source tools just for the fun of it.
+          </p>
+          <p style="font-size: 18px; line-height: 1.8;">
+            If you’re into DIY tech, open-source projects, or just want to collaborate on something cool, I’d love to hear from you.
+          </p>
         </div>
-      </div>
+        
+          
+      </section>
     </li>
     
-    
-    
-                <section id="Workwork">
-                <li class="l-section section">
+                
+                <li class="l-section secwork">
+                  <section id="Workwork">
                   <div class="work">
                     <h2>Selected work</h2>
                     <div class="work--lockup">
@@ -109,28 +150,28 @@
                         <li class="slider--item slider--item-left">
                           <a href="#0">
                             <div class="slider--item-image">
-                              <img src="assets/img/work-victory.jpg" alt="Victory">
+                              <img src="assets/img/skywatch.jpg" alt="skywatch">
                             </div>
-                            <p class="slider--item-title">Victory</p>
-                            <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+                            <p class="slider--item-title">skywatch</p>
+                            <p class="slider--item-description">open-source cloud base weather station and rain predictor.</p>
                           </a>
                         </li>
                         <li class="slider--item slider--item-center">
                           <a href="#0">
                             <div class="slider--item-image">
-                              <img src="assets/img/work-metiew-smith.jpg" alt="Metiew and Smith">
+                              <img src="assets/img/plantd.jpg" alt="plantdoctor">
                             </div>
-                            <p class="slider--item-title">Metiew &amp; Smith</p>
-                            <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+                            <p class="slider--item-title">Plant Doctor</p>
+                            <p class="slider--item-description">Ai based plant doctor.</p>
                           </a>
                         </li>
                         <li class="slider--item slider--item-right">
                           <a href="#0">
                             <div class="slider--item-image">
-                              <img src="assets/img/work-alex-nowak.jpg" alt="Alex Nowak">
+                              <img src="assets/img/watson.jpg" alt="defect detector">
                             </div>
-                            <p class="slider--item-title">Alex Nowak</p>
-                            <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+                            <p class="slider--item-title">Watson-defect dectector</p>
+                            <p class="slider--item-description">Microsoft azure ai defect dectector.</p>
                           </a>
                         </li>
                       </ul>
@@ -153,32 +194,55 @@
                       </div>
                     </div>
                   </div>
-                </li>
-                </section>
-                <section id="testimonials">
-                <li class="l-section section">
-                  <div class="contact">
-                    <div class="contact--lockup">
-                      <div class="modal">
-                        <div class="modal--information">
-                          <p>Pawia 5, 31-154 Kraków, Poland</p>
-                          <a href="mailto:ouremail@gmail.com">ouremail@gmail.com</a>
-                          <a href="tel:+148126287560">+48 12 628 75 60</a>
-                        </div>
-                        <ul class="modal--options">
-                          <li><a href="#0">Bēhance</a></li>
-                          <li><a href="#0">dribbble</a></li>
-                          <li><a href="mailto:ouremail@gmail.com">Contact Us</a></li>
-                        </ul>
-                      </div>
+            </li>
+              </section>
+              <!-- <section id="testimonials" class="testimonials-section">
+                <div class="container">
+                  <h2>Testimonials & Certifications</h2>
+                  
+                  <div class="testimonial-card">
+                    <img src="path/to/testimonial1.jpg" alt="Client Photo or Logo">
+                    <div class="testimonial-text">
+                      <p>"This project exceeded our expectations. Highly recommend!"</p>
+                      <span>- Client Name, Company</span>
                     </div>
                   </div>
-                </li>
-                </section>
-                <section id="contact">
+              
+                  <div class="testimonial-card">
+                    <img src="path/to/certification1.jpg" alt="Certification Badge">
+                    <div class="testimonial-text">
+                      <p>Certified in Full-Stack Web Development – XYZ Institute</p>
+                      <span>Issued: Jan 2024</span>
+                    </div>
+                  </div>
+              
+                  <div class="testimonial-card">
+                    <img src="path/to/testimonial2.jpg" alt="Client Photo or Logo">
+                    <div class="testimonial-text">
+                      <p>"Amazing results delivered ahead of schedule!"</p>
+                      <span>- Another Client</span>
+                    </div>
+                  </div>
+                  <div class="testimonial-card">
+                    <img src="path/to/testimonial2.jpg" alt="Client Photo or Logo">
+                    <div class="testimonial-text">
+                      <p>"Amazing results delivered ahead of schedule!"</p>
+                      <span>- Another Client</span>
+                    </div>
+                  </div>
+                  <div class="testimonial-card">
+                    <img src="path/to/certification2.jpg" alt="Certification Badge">
+                    <div class="testimonial-text">
+                      <p>Certified in Data Science – ABC Academy</p>
+                      <span>Issued: Feb 2024</span>
+                    </div>
+                </div>
+              </section> -->
+              
+              <section id="contact">
                 <li class="l-section section">
                   <div class="hire">
-                    <h2>You want us to do</h2>
+                    <h2>How can I help you?</h2>
                     <form class="work-request">
                       <div class="work-request--options">
                         <span class="options-a">
@@ -210,7 +274,7 @@
                               <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
                             </g>
                             </svg>
-                            Motion Design
+                            Raspberry Pi Projects
                           </label>
                         </span>
                         <span class="options-b">
@@ -232,7 +296,7 @@
                               <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
                             </g>
                             </svg>
-                            Webdesign
+                            Microcontroller Projects
                           </label>
                           <input id="opt-6" type="checkbox" value="marketing">
                           <label for="opt-6">
@@ -242,7 +306,7 @@
                               <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
                             </g>
                             </svg>
-                            Marketing
+                            Webdesign
                           </label>
                         </span>
                       
@@ -260,7 +324,68 @@
                     </form>
                   </div>
                 </li>
-                </section>
+              </section>
+              <footer>
+                <div class="footer" style="
+                  background-color: #ffffff;
+                  color: #000000;
+                  padding: 40px 60px 20px;
+                  font-family: 'Montserrat', sans-serif;
+                  font-size: 14px;
+                  line-height: 1.8;
+                  position: relative;
+                  z-index: 9;
+                  width: 70%;
+                ">
+                  <!-- Top Row: Info Split Left/Right -->
+                  <div style="
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    gap: 40px;
+                  ">
+                    <!-- Left Side -->
+                    <div style="flex: 1; min-width: 250px;">
+                      <p style="margin: 4px 0;">© 2024 Samuel Kosasih</p>
+                      <p style="margin: 4px 0;">Designed & Developed by Samuel Kosasih</p>
+                      <p style="margin: 4px 0;">Email:
+                        <a href="mailto:samuelkoh5104@gmail.com" style="color: #000; text-decoration: underline;">
+                          samuelkoh5104@gmail.com
+                        </a>
+                      </p>
+                      <p style="margin: 4px 0;">Phone:
+                        <a href="tel:+6588997948" style="color: #000; text-decoration: underline;">
+                          8899 7948
+                        </a>
+                      </p>
+                    </div>
+              
+                    <!-- Right Side -->
+                    <div style="flex: 1; min-width: 250px; text-align: right;">
+                      <p style="margin: 4px 0;">Follow Me On:</p>
+                      <p style="margin: 4px 0;">
+                        <a href="#0" style="color: #000; text-decoration: none;">LinkedIn</a><br>
+                        <a href="#0" style="color: #000; text-decoration: none;">GitHub</a><br>
+                        <a href="#0" style="color: #000; text-decoration: none;">Twitter</a>
+                      </p>
+                    </div>
+                  </div>
+              
+                  <!-- Bottom Row: Icons Centered -->
+                  <div style="
+                    margin-top: 30px;
+                    display: flex;
+                    justify-content: center;
+                    gap: 30px;
+                  ">
+                    <a href="#0" style="color: #000; text-decoration: none;">🔗</a>
+                    <a href="#0" style="color: #000; text-decoration: none;">💻</a>
+                    <a href="#0" style="color: #000; text-decoration: none;">🐦</a>
+                  </div>
+                </div>
+              </footer>
+              
+              
               </div>
             </ul>
           </div>
@@ -272,14 +397,98 @@
 <div>
 <ul class="outer-nav">
   <li class="is-active"><a href="#home">Home</a></li>
-  <li><a href="#about"> About me</a></li>
+  <li><a href="#aboutsec"> About me</a></li>
   <li><a href="#Workwork">Selected works</a></li>
-  <li><a href="#testimonials">Testimonials</a></li>
+  <!-- <li><a href="#testimonials">Testimonials</a></li> -->
   <li><a href="#contact">Contact me</a></li>
 </ul>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
 <script src="assets/js/functions-min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const intro = document.querySelector(".intro");
+    const viewport = document.querySelector("#viewport");
+
+    if (!intro || !viewport) return;
+
+    viewport.addEventListener("scroll", () => {
+      const scrollY = viewport.scrollTop || window.scrollY;
+      const fadeStart = 0;
+      const fadeEnd = 700;
+
+      const progress = Math.min(Math.max(scrollY - fadeStart, 0), fadeEnd - fadeStart);
+      const percent = progress / (fadeEnd - fadeStart);
+
+      const opacity = 1 - percent;
+      const translateY = percent * 90;           // Move up to 120px
+      const scale = 1 - percent * 0.05;           // Shrinks to 85%
+
+      intro.style.opacity = opacity;
+      intro.style.transform = `translateY(${translateY}px) scale(${scale})`;
+    });
+  });
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".l-section");
+    const navItems = document.querySelectorAll(".side-nav li");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Array.from(sections).indexOf(entry.target);
+            navItems.forEach((item, i) => {
+              item.classList.toggle("is-active", i === index);
+            });
+          }
+        });
+      },
+      {
+        root: document.querySelector("#l-viewport"), // or null for default body scroll
+        threshold: 0.5, // section is considered active when 50% visible
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const animatedBG = document.querySelector(".animatedbackground");
+
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        animatedBG.classList.add("visible");
+      } else {
+        animatedBG.classList.remove("visible");
+      }
+    });
+  });
+  
+
+
+  const cursor = document.getElementById("custom-cursor");
+
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+  });
+
+  document.addEventListener("mousedown", () => {
+    cursor.style.backgroundImage = "url('assets/img/float2.png')";
+  });
+
+  document.addEventListener("mouseup", () => {
+    cursor.style.backgroundImage = "url('assets/img/float.png')";
+  });
+</script>
+  
+  
+
+
+
+
 
 </body>
+
 </html>
+

@@ -1055,33 +1055,31 @@
     }
     var o = !0,
         a = null;
-        const sections = document.querySelectorAll('.l-wrapper .l-section');
-    $(this).on("mousewheel DOMMouseScroll", function(e) {
-        if (!$(".outer-nav").hasClass("is-vis")) {
-            e.preventDefault();
-            var i = e.originalEvent.wheelDelta ? -e.originalEvent.wheelDelta : 20 * e.originalEvent.detail;
-            i > 50 && o ? (o = !1, clearTimeout(a), a = setTimeout(function() {
-                o = !0
-            }, 800), t(1)) : -50 > i && o && (o = !1, clearTimeout(a), a = setTimeout(function() {
-                o = !0
-            }, 800), t(-1))
+    const sections = document.querySelectorAll('.l-wrapper .l-section');
+
+    $(".side-nav a, .outer-nav a").on("click", function (e) {
+        e.preventDefault();
+      
+        const targetID = $(this).attr("href");
+        const targetEl = document.querySelector(targetID);
+      
+        if (targetEl) {
+        const headerOffset = 80;
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          targetEl.scrollIntoView({
+            top: offsetPosition,
+            behavior: "smooth",
+            block: "start",
+            inline: "nearest"
+          });
+      
+          // Update nav styles
+          $(".side-nav li, .outer-nav li").removeClass("is-active");
+          $(this).closest("li").addClass("is-active");
         }
-    }), $(".side-nav li, .outer-nav li").click(function() {
-        if (!$(this).hasClass("is-active")) {
-            var t = $(this),
-                n = t.parent().find(".is-active"),
-                s = t.parent().children().index(n),
-                r = t.parent().children().index(t),
-                o = $(this).parent().children().length - 1;
-            e(r), i(s, r, o)
-        }
-    }), $(".cta").click(function() {
-        var t = $(".side-nav").find(".is-active"),
-            n = $(".side-nav").children().index(t),
-            s = $(".side-nav").children().length - 1,
-            r = s;
-        e(s), i(n, r, s)
-    });
+      });
+      
     var l = document.getElementById("viewport"),
         c = new Hammer(l);
     c.get("swipe").set({
@@ -1093,34 +1091,4 @@
     }), n(), s(), r()
 });
 
-window.addEventListener('scroll', () => {
-    const intro = document.querySelector('.intro');
-    const scrollY = window.scrollY;
-    const fadeStart = 0;
-    const fadeEnd = window.innerHeight * 0.1; // Adjust how soon it fades
-  
-    if (scrollY <= fadeEnd) {
-      const opacity = 1 - scrollY / fadeEnd;
-      const scale = 1 - (scrollY / fadeEnd) * 0.05;
-      intro.style.opacity = opacity;
-      intro.style.transform = `scale(${scale})`;
-    }
-  });
-
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const viewportHeight = window.innerHeight;
-  
-    const currentSection = Math.floor(scrollY / viewportHeight);
-    const navItems = document.querySelectorAll('.side-nav li');
-    const sections = document.querySelectorAll('.l-wrapper .l-section');
-  
-    navItems.forEach((navItem, index) => {
-      navItem.classList.toggle('is-active', index === currentSection);
-    });
-  
-    sections.forEach((section, index) => {
-      section.classList.toggle('section--is-active', index === currentSection);
-    });
-  });
   
