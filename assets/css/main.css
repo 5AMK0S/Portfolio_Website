@@ -1463,6 +1463,79 @@ body::-webkit-scrollbar {
   font-size: 30px;
   text-align: center
   }
+.hire__intro {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px
+  }
+.hire__intro-copy {
+  max-width: 360px
+  }
+.hire__eyebrow {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #0c0c0c
+  }
+.hire__lead {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6
+  }
+.hire__channels {
+  background: #f2f2f2;
+  border-radius: 12px;
+  padding: 16px 18px;
+  min-width: 220px
+  }
+.hire__channels-title {
+  margin: 0 0 12px 0;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px
+  }
+.hire__channels-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 10px
+  }
+.hire__channels-list a {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #0c0c0c;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  -webkit-transition: -webkit-transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease
+  }
+.hire__channels-list a:hover {
+  background: #46ff99;
+  color: #0c0c0c;
+  -webkit-transform: translateY(-2px);
+  transform: translateY(-2px)
+  }
 .work-request {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1580,7 +1653,31 @@ body::-webkit-scrollbar {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 60px
+  margin-bottom: 30px
+  }
+.work-request--message {
+  width: 100%;
+  margin-bottom: 40px
+  }
+.work-request--message label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px
+  }
+.work-request--message textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  padding: 14px 16px;
+  font-size: 14px;
+  resize: vertical
+  }
+.work-request--message textarea:focus {
+  outline: none;
+  border-color: #46ff99;
+  box-shadow: 0 0 0 2px rgba(70, 255, 153, 0.2)
   }
 .work-request--information .information-name, .work-request--information .information-email {
   position: relative;
