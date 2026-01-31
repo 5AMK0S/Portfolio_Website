@@ -1059,24 +1059,37 @@
 
     $(".side-nav a, .outer-nav a").on("click", function (e) {
         e.preventDefault();
-      
+
         const targetID = $(this).attr("href");
         const targetEl = document.querySelector(targetID);
-      
-        if (targetEl) {
+        const viewport = document.getElementById("viewport");
+
+        if (targetEl && viewport) {
         const headerOffset = 80;
-        const elementPosition = targetEl.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          targetEl.scrollIntoView({
+        const targetSection = targetEl.closest(".l-section");
+        const offsetPosition = targetSection ? targetSection.offsetTop - headerOffset : 0;
+          viewport.scrollTo({
             top: offsetPosition,
-            behavior: "smooth",
-            block: "start",
-            inline: "nearest"
+            behavior: "smooth"
           });
-      
+
           // Update nav styles
-          $(".side-nav li, .outer-nav li").removeClass("is-active");
-          $(this).closest("li").addClass("is-active");
+          if (targetSection) {
+            const targetIndex = Array.from(sections).indexOf(targetSection);
+            if (targetIndex >= 0) {
+              $(".side-nav li, .outer-nav li").removeClass("is-active");
+              $(".side-nav li").eq(targetIndex).addClass("is-active");
+              $(".outer-nav li").eq(targetIndex).addClass("is-active");
+            }
+          }
+
+          if ($(".outer-nav").hasClass("is-vis")) {
+            $(".perspective").removeClass("effect-rotate-left--animate");
+            setTimeout(function() {
+                $(".perspective").removeClass("perspective--modalview")
+            }, 400);
+            $(".outer-nav, .outer-nav li, .outer-nav--return").removeClass("is-vis");
+          }
         }
       });
       
