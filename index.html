@@ -68,6 +68,7 @@
               <nav class="l-side-nav">
                 <ul class="side-nav">
                   <li class="is-active"><span>Home</span></li>
+                  <li><span>Built with</span></li>
                   <li><span>About Me</span></li>
                   <li><span>Selected works</span></li>
                   <!-- <li><span>Testimonials</span></li> -->
@@ -109,6 +110,32 @@
           </div>
         </div>
       </li>
+      </section>
+
+      <section id="built-with">
+        <li class="l-section built-with-section">
+          <div class="built-with">
+            <div class="built-with__container">
+              <header class="built-with__header">
+                <h2 class="built-with__title">Built with</h2>
+                <p class="built-with__subtitle">The stack I use to ship projects end-to-end.</p>
+              </header>
+              <ul class="built-with__stack" role="list">
+                <li><span class="built-with__pill" tabindex="0">Kubernetes</span></li>
+                <li><span class="built-with__pill" tabindex="0">Docker</span></li>
+                <li><span class="built-with__pill" tabindex="0">Micro-controllers</span></li>
+                <li><span class="built-with__pill" tabindex="0">Raspberry Pi</span></li>
+                <li><span class="built-with__pill" tabindex="0">Linux</span></li>
+                <li><span class="built-with__pill" tabindex="0">Deep Learning</span></li>
+                <li><span class="built-with__pill" tabindex="0">Machine Learning</span></li>
+                <li><span class="built-with__pill" tabindex="0">Google Apps Script</span></li>
+                <li><span class="built-with__pill" tabindex="0">Python</span></li>
+                <li><span class="built-with__pill" tabindex="0">Kedro</span></li>
+                <li><span class="built-with__pill" tabindex="0">Feature Engineering</span></li>
+              </ul>
+            </div>
+          </div>
+        </li>
       </section>
 
               
@@ -411,6 +438,7 @@
 <div>
 <ul class="outer-nav">
   <li class="is-active"><a href="#home">Home</a></li>
+  <li><a href="#built-with">Built with</a></li>
   <li><a href="#aboutsec"> About me</a></li>
   <li><a href="#Workwork">Selected works</a></li>
   <!-- <li><a href="#testimonials">Testimonials</a></li> -->
@@ -540,6 +568,42 @@
         animatedBG.classList.remove("visible");
       }
     });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const builtWithSection = document.querySelector("#built-with");
+    if (!builtWithSection) return;
+
+    const items = builtWithSection.querySelectorAll(".built-with__pill");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const revealItems = () => {
+      items.forEach((item, index) => {
+        if (!prefersReducedMotion) {
+          item.style.transitionDelay = `${index * 100}ms`;
+        }
+        item.classList.add("is-revealed");
+      });
+    };
+
+    if (prefersReducedMotion) {
+      revealItems();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, observerInstance) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            revealItems();
+            observerInstance.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(builtWithSection);
   });
   
 
