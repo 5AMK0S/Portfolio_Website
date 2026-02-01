@@ -111,6 +111,30 @@
       </li>
       </section>
 
+      <section id="built-with" class="built-with">
+        <li class="l-section">
+          <div class="built-with__container">
+            <header class="built-with__header">
+              <h2>Built with</h2>
+              <p>The stack I use to ship projects end-to-end.</p>
+            </header>
+            <div class="built-with__stack" role="list">
+              <span class="built-with__item" role="listitem" tabindex="0">Kubernetes</span>
+              <span class="built-with__item" role="listitem" tabindex="0">Docker</span>
+              <span class="built-with__item" role="listitem" tabindex="0">Micro-controllers</span>
+              <span class="built-with__item" role="listitem" tabindex="0">Raspberry Pi</span>
+              <span class="built-with__item" role="listitem" tabindex="0">Linux</span>
+              <span class="built-with__item" role="listitem" tabindex="0">Deep Learning</span>
+              <span class="built-with__item" role="listitem" tabindex="0">Machine Learning</span>
+              <span class="built-with__item" role="listitem" tabindex="0">Google Apps Script</span>
+              <span class="built-with__item" role="listitem" tabindex="0">Python</span>
+              <span class="built-with__item" role="listitem" tabindex="0">Kedro</span>
+              <span class="built-with__item" role="listitem" tabindex="0">Feature Engineering</span>
+            </div>
+          </div>
+        </li>
+      </section>
+
               
   <div class="animatedbackground">
     <li class="l-section secabout">
@@ -532,6 +556,8 @@
   document.addEventListener("DOMContentLoaded", () => {
     const animatedBG = document.querySelector(".animatedbackground");
 
+    if (!animatedBG) return;
+
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
       if (scrollY > 100) {
@@ -540,6 +566,38 @@
         animatedBG.classList.remove("visible");
       }
     });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector("#built-with");
+    const items = section ? section.querySelectorAll(".built-with__item") : [];
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!section || items.length === 0) return;
+
+    if (prefersReducedMotion) {
+      items.forEach((item) => {
+        item.classList.add("is-visible");
+        item.style.transitionDelay = "0ms";
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          items.forEach((item, index) => {
+            item.style.transitionDelay = `${index * 90}ms`;
+            item.classList.add("is-visible");
+          });
+          observer.disconnect();
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(section);
   });
   
 
