@@ -645,7 +645,7 @@ body::-webkit-scrollbar {
   pointer-events: none;
 }
 .animatedbackground {
-  top: 100vh;
+  top: 200vh;
   position: absolute;
   height: auto;
   width: 100%;
@@ -1952,7 +1952,10 @@ body::-webkit-scrollbar {
   }
 
 .built-with {
-  padding: 110px 0 150px;
+  padding: 120px 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
@@ -1967,6 +1970,7 @@ body::-webkit-scrollbar {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+  width: 100%;
 }
 
 .built-with__header {

@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const desired = targetOffset * item.direction;
       item.currentOffset = lerp(item.currentOffset, desired, 0.08);
       const wrapped = ((item.currentOffset % item.baseWidth) + item.baseWidth) % item.baseWidth;
-      const translateX = item.direction < 0 ? -wrapped : wrapped;
+      const translateX = item.direction * wrapped;
       item.track.style.transform = `translate3d(${translateX}px, 0, 0)`;
     });
 
