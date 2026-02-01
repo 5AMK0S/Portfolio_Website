@@ -903,10 +903,114 @@ body::-webkit-scrollbar {
   .intro--options > a {
     margin-right: 30px
     }
-  .intro--options > a:last-child {
-    margin-right: 0
-    }
+.intro--options > a:last-child {
+  margin-right: 0
   }
+  }
+
+.built-with {
+  padding: 70px 0;
+}
+
+.built-with__container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.built-with__header h2 {
+  font-size: 34px;
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+
+.built-with__header p {
+  margin: 0 auto 32px;
+  max-width: 520px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+}
+
+.built-with__stack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.built-with__tile {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  min-height: 64px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out, box-shadow 0.25s ease, border-color 0.25s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.built-with__tile.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.built-with__tile:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+}
+
+.built-with__tile:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 4px;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.built-with__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.1) brightness(1.2);
+  opacity: 0.9;
+}
+
+.built-with__label {
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .built-with {
+    padding: 50px 0;
+  }
+
+  .built-with__header h2 {
+    font-size: 28px;
+  }
+
+  .built-with__header p {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .built-with__tile {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
 @media (max-width: 767px) {
   .intro--banner {
     height: 305px

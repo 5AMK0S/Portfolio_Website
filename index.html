@@ -111,6 +111,63 @@
       </li>
       </section>
 
+      <section id="built-with">
+        <li class="l-section built-with">
+          <div class="built-with__container">
+            <div class="built-with__header">
+              <h2>Built with</h2>
+              <p>The stack I use to ship projects end-to-end.</p>
+            </div>
+            <div class="built-with__stack" role="list">
+              <div class="built-with__tile" role="listitem" tabindex="0">
+                <img class="built-with__logo" src="https://via.placeholder.com/44x44.png?text=K8" alt="Kubernetes logo placeholder">
+                <span class="built-with__label">Kubernetes</span>
+              </div>
+              <div class="built-with__tile" role="listitem" tabindex="0">
+                <img class="built-with__logo" src="https://via.placeholder.com/44x44.png?text=DK" alt="Docker logo placeholder">
+                <span class="built-with__label">Docker</span>
+              </div>
+              <div class="built-with__tile" role="listitem" tabindex="0">
+                <img class="built-with__logo" src="https://via.placeholder.com/44x44.png?text=MC" alt="Micro-controllers logo placeholder">
+                <span class="built-with__label">Micro-controllers</span>
+              </div>
+              <div class="built-with__tile" role="listitem" tabindex="0">
+                <img class="built-with__logo" src="https://via.placeholder.com/44x44.png?text=RP" alt="Raspberry Pi logo placeholder">
+                <span class="built-with__label">Raspberry Pi</span>
+              </div>
+              <div class="built-with__tile" role="listitem" tabindex="0">
+                <img class="built-with__logo" src="https://via.placeholder.com/44x44.png?text=LN" alt="Linux logo placeholder">
+                <span class="built-with__label">Linux</span>
+              </div>
+              <div class="built-with__tile" role="listitem" tabindex="0">
+                <img class="built-with__logo" src="https://via.placeholder.com/44x44.png?text=DL" alt="Deep Learning logo placeholder">
+                <span class="built-with__label">Deep Learning</span>
+              </div>
+              <div class="built-with__tile" role="listitem" tabindex="0">
+                <img class="built-with__logo" src="https://via.placeholder.com/44x44.png?text=ML" alt="Machine Learning logo placeholder">
+                <span class="built-with__label">Machine Learning</span>
+              </div>
+              <div class="built-with__tile" role="listitem" tabindex="0">
+                <img class="built-with__logo" src="https://via.placeholder.com/44x44.png?text=GA" alt="Google Apps Script logo placeholder">
+                <span class="built-with__label">Google Apps Script</span>
+              </div>
+              <div class="built-with__tile" role="listitem" tabindex="0">
+                <img class="built-with__logo" src="https://via.placeholder.com/44x44.png?text=PY" alt="Python logo placeholder">
+                <span class="built-with__label">Python</span>
+              </div>
+              <div class="built-with__tile" role="listitem" tabindex="0">
+                <img class="built-with__logo" src="https://via.placeholder.com/44x44.png?text=KD" alt="Kedro logo placeholder">
+                <span class="built-with__label">Kedro</span>
+              </div>
+              <div class="built-with__tile" role="listitem" tabindex="0">
+                <img class="built-with__logo" src="https://via.placeholder.com/44x44.png?text=FE" alt="Feature Engineering logo placeholder">
+                <span class="built-with__label">Feature Engineering</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </section>
+
               
   <div class="animatedbackground">
     <li class="l-section secabout">
@@ -541,7 +598,40 @@
       }
     });
   });
-  
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const tiles = Array.from(document.querySelectorAll(".built-with__tile"));
+    const stack = document.querySelector(".built-with__stack");
+
+    if (!tiles.length || !stack) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      tiles.forEach((tile) => tile.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          tiles.forEach((tile, index) => {
+            tile.style.transitionDelay = `${index * 100}ms`;
+            tile.classList.add("is-visible");
+          });
+          obs.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(stack);
+  });
+
 
 
   const cursor = document.getElementById("custom-cursor");
