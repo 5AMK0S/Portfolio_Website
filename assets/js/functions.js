@@ -48,13 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   observer.observe(section);
 
-  const state = Array.from(rows).map((row) => ({
-    row,
-    track: row.querySelector('.built-with__track'),
-    direction: Number(row.dataset.direction || 1),
-    baseWidth: 0,
-    currentOffset: 0,
-  }));
+  const state = Array.from(rows).map((row) => {
+    const directionValue = row.dataset.direction;
+    const direction = directionValue === 'right' ? 1 : -1;
+
+    return {
+      row,
+      track: row.querySelector('.built-with__track'),
+      direction,
+      baseWidth: 0,
+      currentOffset: 0,
+    };
+  });
 
   const measure = () => {
     state.forEach((item) => {
@@ -97,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const desired = targetOffset * item.direction;
       item.currentOffset = lerp(item.currentOffset, desired, 0.08);
       const wrapped = ((item.currentOffset % item.baseWidth) + item.baseWidth) % item.baseWidth;
-      const translateX = item.direction * wrapped;
+      const translateX = item.direction === -1 ? -wrapped : wrapped;
       item.track.style.transform = `translate3d(${translateX}px, 0, 0)`;
     });
 
