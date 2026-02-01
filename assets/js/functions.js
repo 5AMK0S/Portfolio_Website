@@ -99,11 +99,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!item.track || !item.baseWidth) {
         return;
       }
-      const desired = targetOffset * item.direction;
-      item.currentOffset = lerp(item.currentOffset, desired, 0.08);
-      const wrapped = ((item.currentOffset % item.baseWidth) + item.baseWidth) % item.baseWidth;
-      const translateX = item.direction === -1 ? -wrapped : wrapped;
-      item.track.style.transform = `translate3d(${translateX}px, 0, 0)`;
+          // keep the same "targetOffset" for both rows
+          item.currentOffset = lerp(item.currentOffset, targetOffset, 0.08);
+
+          // wrap to 0..baseWidth
+          const wrapped = ((item.currentOffset % item.baseWidth) + item.baseWidth) % item.baseWidth;
+
+          // apply direction ONLY here
+          item.track.style.transform = `translate3d(${wrapped * item.direction}px, 0, 0)`;
+
     });
 
     requestAnimationFrame(animate);
