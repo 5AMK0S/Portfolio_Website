@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/main.css">
 
 </head>
-<body>
+<body class="page-preload">
 <div id="custom-cursor" style="
   position: fixed;
   top: 0;
@@ -80,7 +80,7 @@
       <li class="l-section is-active">
         <div class="intro">
           <div class="intro--banner">
-            <h1>HI I'am<br>Samuel</h1>
+            <h1 class="intro--title" data-line-one="Hi I'am" data-line-two="Samuel"></h1>
             <h2>AI and Data Engineering Student -Nyp year 3</h2>
             <button class="cta">Resume
               <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
@@ -420,6 +420,61 @@
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
 <script src="assets/js/functions-min.js"></script>
 <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const title = document.querySelector(".intro--title");
+    const body = document.body;
+
+    if (body) {
+      requestAnimationFrame(() => {
+        body.classList.add("page-loaded");
+      });
+    }
+
+    if (!title) return;
+
+    const lineOne = title.dataset.lineOne || "";
+    const lineTwo = title.dataset.lineTwo || "";
+
+    if (prefersReducedMotion) {
+      title.innerHTML = `${lineOne}<br>${lineTwo}`;
+      return;
+    }
+
+    title.innerHTML = `
+      <span class="intro--title-line" data-line="one"></span>
+      <span class="intro--title-line" data-line="two"></span>
+      <span class="type-cursor" aria-hidden="true"></span>
+    `;
+
+    const lines = [lineOne, lineTwo];
+    const lineEls = title.querySelectorAll(".intro--title-line");
+    const cursor = title.querySelector(".type-cursor");
+    let lineIndex = 0;
+    let charIndex = 0;
+
+    const typeNext = () => {
+      if (lineIndex >= lines.length) {
+        if (cursor) cursor.classList.add("is-complete");
+        return;
+      }
+
+      const currentLine = lines[lineIndex];
+      if (charIndex < currentLine.length) {
+        lineEls[lineIndex].textContent += currentLine[charIndex];
+        charIndex += 1;
+        setTimeout(typeNext, 70);
+        return;
+      }
+
+      lineIndex += 1;
+      charIndex = 0;
+      setTimeout(typeNext, 240);
+    };
+
+    setTimeout(typeNext, 300);
+  });
+
   document.addEventListener("DOMContentLoaded", () => {
     const intro = document.querySelector(".intro");
     const viewport = document.querySelector("#viewport");
