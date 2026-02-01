@@ -12,7 +12,7 @@
 
 </head>
 <body>
-  <div id="custom-cursor" style="
+<div id="custom-cursor" style="
   position: fixed;
   top: 0;
   left: 0;
@@ -28,6 +28,19 @@
   transition: transform 0.1s ease-out;
   opacity: 0.8;
 "></div>
+
+  <div class="parallax-bg" id="bg">
+    <div class="layer" data-speedy="0.12" data-speedx="0.02" data-scale="1.00"
+         style="background-image:url('assets/img/layer2_outlines_1440p.png')"></div>
+    <div class="layer" data-speedy="0.22" data-speedx="0.05" data-scale="1.03"
+         style="background-image:url('assets/img/layer6_bloom_1440p_scarce_small.png')"></div>
+    <div class="layer" data-speedy="0.36" data-speedx="0.09" data-scale="1.06"
+         style="background-image:url('assets/img/layer3_faint_1440p.png')"></div>
+    <div class="layer" data-speedy="0.55" data-speedx="0.14" data-scale="1.10"
+         style="background-image:url('assets/img/layer4_medium_1440p.png')"></div>
+    <div class="layer" data-speedy="0.80" data-speedx="0.20" data-scale="1.16"
+         style="background-image:url('assets/img/layer5_bright_1440p.png')"></div>
+  </div>
 
 
 <div class="device-notification">
@@ -481,6 +494,54 @@
   document.addEventListener("mouseup", () => {
     cursor.style.backgroundImage = "url('assets/img/float.png')";
   });
+
+  const parallaxLayers = Array.from(document.querySelectorAll(".layer"));
+  const parallaxContainer = document.querySelector("#viewport");
+
+  const amplitudeY = 1400;
+  const amplitudeX = 480;
+  const rotateMax = 4.0;
+  const ease = 0.12;
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function getScroll01() {
+    const scrollEl = parallaxContainer || document.documentElement;
+    const max = scrollEl.scrollHeight - scrollEl.clientHeight;
+    if (max <= 0) return 0;
+    const scrollTop = parallaxContainer ? parallaxContainer.scrollTop : window.scrollY;
+    return clamp(scrollTop / max, 0, 1);
+  }
+
+  let target = 0;
+  let current = 0;
+
+  function frame() {
+    target = getScroll01();
+    current += (target - current) * ease;
+
+    const centered = current - 0.5;
+    const rot = centered * rotateMax;
+
+    parallaxLayers.forEach((layer) => {
+      const sy = parseFloat(layer.dataset.speedy || "0.2");
+      const sx = parseFloat(layer.dataset.speedx || "0.0");
+      const sc = parseFloat(layer.dataset.scale || "1.0");
+
+      const y = centered * amplitudeY * sy;
+      const x = centered * amplitudeX * sx;
+      const scaleWobble = 1 + Math.abs(centered) * 0.06 * (sc - 1);
+
+      layer.style.transform =
+        `translate3d(${x}px, ${y}px, 0) rotate(${rot * sx}deg) scale(${sc * scaleWobble})`;
+    });
+
+    requestAnimationFrame(frame);
+  }
+
+  requestAnimationFrame(frame);
 </script>
   
   
