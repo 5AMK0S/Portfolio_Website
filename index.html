@@ -450,6 +450,11 @@
     const lines = [lineOne, lineTwo];
     const lineEls = title.querySelectorAll(".intro--title-line");
     const cursor = title.querySelector(".type-cursor");
+    const textNodes = Array.from(lineEls, () => document.createTextNode(""));
+
+    lineEls.forEach((lineEl, index) => {
+      lineEl.append(textNodes[index]);
+    });
     let lineIndex = 0;
     let charIndex = 0;
 
@@ -460,19 +465,22 @@
       }
 
       const currentLine = lines[lineIndex];
+      if (cursor && lineEls[lineIndex] && cursor.parentElement !== lineEls[lineIndex]) {
+        lineEls[lineIndex].appendChild(cursor);
+      }
       if (charIndex < currentLine.length) {
-        lineEls[lineIndex].textContent += currentLine[charIndex];
+        textNodes[lineIndex].data += currentLine[charIndex];
         charIndex += 1;
-        setTimeout(typeNext, 70);
+        setTimeout(typeNext, 140);
         return;
       }
 
       lineIndex += 1;
       charIndex = 0;
-      setTimeout(typeNext, 240);
+      setTimeout(typeNext, 480);
     };
 
-    setTimeout(typeNext, 300);
+    setTimeout(typeNext, 600);
   });
 
   document.addEventListener("DOMContentLoaded", () => {
