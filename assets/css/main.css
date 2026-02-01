@@ -650,6 +650,7 @@ body::-webkit-scrollbar {
   height: auto;
   width: 100%;
   margin: 0;
+  padding-top: 120px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1951,7 +1952,7 @@ body::-webkit-scrollbar {
   }
 
 .built-with {
-  padding: 80px 0;
+  padding: 100px 0 140px;
 }
 
 .built-with__container {
