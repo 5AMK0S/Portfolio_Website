@@ -1055,7 +1055,7 @@
     }
     var o = !0,
         a = null;
-    const sections = document.querySelectorAll('.l-wrapper .l-section');
+    const sections = document.querySelectorAll('.l-section');
 
     $(".side-nav a, .outer-nav a").on("click", function (e) {
         e.preventDefault();
@@ -1066,8 +1066,12 @@
 
         if (targetEl && viewport) {
         const headerOffset = 80;
-        const targetSection = targetEl.closest(".l-section");
-        const offsetPosition = targetSection ? targetSection.offsetTop - headerOffset : 0;
+        const targetSection = targetEl.classList.contains("l-section")
+          ? targetEl
+          : targetEl.closest(".l-section") || targetEl.querySelector(".l-section");
+        const offsetPosition = targetSection
+          ? targetSection.offsetTop - headerOffset
+          : targetEl.offsetTop - headerOffset;
           viewport.scrollTo({
             top: offsetPosition,
             behavior: "smooth"

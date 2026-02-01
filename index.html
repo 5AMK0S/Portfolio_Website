@@ -45,7 +45,7 @@
               <a class="header--logo" href="#0">
                 <img src="assets/img/logo.png" width="200" alt="SamKos" style="padding-top: 30px;">
               </a>
-                <button class="header--cta">Contact Me</button>
+                <button class="header--cta" id="jump_to_location" type="button">Contact Me</button>
                 <div class="header--nav-toggle">
                   <span></span>
                 </div>
@@ -54,18 +54,18 @@
               <div class="scroll-indicator"></div>
               <nav class="l-side-nav">
                 <ul class="side-nav">
-                  <li class="is-active"><span>Home</span></li>
-                  <li><span>About Me</span></li>
-                  <li><span>Selected works</span></li>
+                  <li class="is-active"><a href="#home"><span>Home</span></a></li>
+                  <li><a href="#aboutsec"><span>About Me</span></a></li>
+                  <li><a href="#Workwork"><span>Selected works</span></a></li>
                   <!-- <li><span>Testimonials</span></li> -->
-                  <li><span>Contact me</span></li>
+                  <li><a href="#contact"><span>Contact me</span></a></li>
                 </ul>
               </nav>
             </div>
 
-      <section id="home"> 
       <li class="l-section is-active">
-        <div class="intro">
+        <section id="home">
+          <div class="intro">
           <div class="intro--banner">
             <h1>HI I'am<br>Samuel</h1>
             <h2>AI and Data Engineering Student -Nyp year 3</h2>
@@ -94,9 +94,9 @@
               <p>Click me to grab a copy of my resume Here.</p>
             </a>
           </div>
-        </div>
+          </div>
+        </section>
       </li>
-      </section>
 
               
   <div class="animatedbackground">
@@ -240,8 +240,8 @@
                 </div>
               </section> -->
               
-              <section id="contact">
                 <li class="l-section section">
+                  <section id="contact">
                   <div class="hire">
                     <h2>How can I help you?</h2>
                     <form class="work-request">
@@ -324,8 +324,8 @@
                       <input type="submit" value="Send Request">
                     </form>
                   </div>
+                  </section>
                 </li>
-              </section>
               <footer>
                 <div class="footer" style="
                   background-color: #ffffff;
@@ -465,8 +465,18 @@
       }
     });
   });
-  
 
+  document.addEventListener("DOMContentLoaded", () => {
+    const jumpButton = document.getElementById("jump_to_location");
+    const contactSection = document.getElementById("contact");
+
+    if (!jumpButton || !contactSection) return;
+
+    jumpButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    });
+  });
 
   const cursor = document.getElementById("custom-cursor");
 
