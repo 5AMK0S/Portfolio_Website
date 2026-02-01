@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700;800&display=swap");
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -548,7 +548,7 @@ img::-moz-selection {
     top: -5px;
     color: #424242;
     font-size: 6px;
-    font-weight: 1000;
+    font-weight: 800;
     cursor: pointer;
   }
   
@@ -558,7 +558,7 @@ img::-moz-selection {
     left: 10px;
     color: #525151;
     font-size: 14px;
-    font-weight: 1000;
+    font-weight: 800;
     opacity: 0;
     visibility: hidden;
 
@@ -570,7 +570,7 @@ img::-moz-selection {
     left: 10px;
     color: #2e2e2e;
     font-size: 14px;
-    font-weight: 1000;
+    font-weight: 800;
   }
   
   .side-nav li:nth-child(1)::before {
@@ -701,7 +701,7 @@ body::-webkit-scrollbar {
 .intro--banner h1 {
   position: relative;
   font-size: 68px;
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1;
   z-index: -1
   }
@@ -1150,7 +1150,7 @@ body::-webkit-scrollbar {
   position: relative;
   margin-top: 35px;
   font-size: 68px;
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1;
   z-index: 1
   }
@@ -1561,7 +1561,7 @@ body::-webkit-scrollbar {
   width: 45%;
   height: 50px;
   font-size: 30px;
-  font-weight: 300
+  font-weight: 600
   }
 .work-request--information input[type="text"], .work-request--information input[type="email"] {
   width: 100%;
@@ -1767,7 +1767,7 @@ body::-webkit-scrollbar {
   -webkit-transform: translatex(350px) translatez(-1000px);
   transform: translatex(350px) translatez(-1000px);
   font-size: 55px;
-  font-weight: 900;
+  font-weight: 800;
   opacity: 0;
   cursor: pointer;
   -webkit-transition: opacity 0.2s, -webkit-transform 0.2s;
