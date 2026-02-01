@@ -13,3 +13,38 @@ window.addEventListener('scroll', () => {
   }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const tiles = document.querySelectorAll('.built-with__tile');
+  const stack = document.querySelector('.built-with__stack');
+
+  if (!tiles.length || !stack) {
+    return;
+  }
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion) {
+    tiles.forEach((tile) => {
+      tile.classList.add('is-visible');
+      tile.style.transitionDelay = '0ms';
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          tiles.forEach((tile, index) => {
+            tile.style.transitionDelay = `${index * 100}ms`;
+            tile.classList.add('is-visible');
+          });
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  observer.observe(stack);
+});
