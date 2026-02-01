@@ -1971,3 +1971,203 @@ body::-webkit-scrollbar {
   margin: 0 auto;
   color: #fff;
   }
+
+@media (max-width: 768px) {
+  #custom-cursor {
+    display: none;
+  }
+
+  .l-viewport {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .l-main-content > li,
+  .l-section {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .l-section {
+    padding: 96px 20px 60px;
+    align-items: flex-start;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 16px;
+    height: 64px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+  }
+
+  .header--logo img {
+    width: 140px;
+    padding-top: 0 !important;
+  }
+
+  .header--nav-toggle {
+    top: 12px;
+    right: 16px;
+  }
+
+  .header--cta {
+    right: 76px;
+  }
+
+  .intro {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 120px 0 20px;
+    pointer-events: auto;
+    z-index: 2;
+  }
+
+  .intro--banner {
+    height: auto;
+    padding-bottom: 24px;
+  }
+
+  .intro--banner .intro--title {
+    font-size: 48px;
+    z-index: 0;
+  }
+
+  .intro--banner h2 {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .intro--clickme {
+    margin-top: 12px;
+    font-size: 12px;
+  }
+
+  .intro--options {
+    gap: 16px;
+  }
+
+  .intro--options > a {
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .animatedbackground {
+    position: relative;
+    top: 0;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .parallax-bg {
+    opacity: 0.6;
+  }
+
+  .about--lockup {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 0 10px;
+  }
+
+  .about--lockup > div:first-child {
+    width: 100%;
+    height: auto;
+    display: grid;
+    gap: 16px;
+    place-items: center;
+  }
+
+  .about--lockup .hover-img {
+    position: relative;
+    width: min(100%, 320px);
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin: 0 auto;
+  }
+
+  .about--text {
+    padding: 20px !important;
+    border-radius: 14px;
+  }
+
+  .about--text h2 {
+    font-size: 32px !important;
+  }
+
+  .about--text p {
+    font-size: 15px !important;
+  }
+
+  .work {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .project-card {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .project-card__title {
+    font-size: 20px;
+  }
+
+  .hire {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 24px;
+  }
+
+  .work-request--options {
+    flex-direction: column;
+  }
+
+  .work-request--options .options-a,
+  .work-request--options .options-b {
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .work-request--options label {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .work-request--information {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .work-request--information .information-name,
+  .work-request--information .information-email {
+    width: 100%;
+  }
+
+  .footer {
+    position: relative;
+    height: auto;
+    width: 100% !important;
+    padding: 24px 20px !important;
+    align-items: stretch;
+  }
+
+  .footer > div {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  .footer > div > div:last-child {
+    text-align: center !important;
+  }
+}
