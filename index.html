@@ -90,7 +90,7 @@
               </svg>
               <span class="btn-background"></span>
             </button>
-            <img src="assets/img/simle.gif" height="500" alt="Welcome" class="background-image">
+            <img src="assets/img/simle.gif" height="500" alt="Welcome" class="background-image" data-alt-src="assets/img/simle copy.gif">
             <p class="intro--clickme">Click me to see my resume</p>
           </div>
           <div class="intro--options">
@@ -672,8 +672,13 @@
   document.addEventListener("DOMContentLoaded", () => {
     const intro = document.querySelector(".intro");
     const viewport = document.querySelector("#viewport");
+    const introTitle = document.querySelector(".intro--title");
+    const heroImage = document.querySelector(".background-image");
 
     if (!intro || !viewport) return;
+
+    const baseHeroSrc = heroImage ? heroImage.getAttribute("src") : null;
+    const altHeroSrc = heroImage ? heroImage.dataset.altSrc : null;
 
     viewport.addEventListener("scroll", () => {
       const scrollY = viewport.scrollTop || window.scrollY;
@@ -689,6 +694,19 @@
 
       intro.style.opacity = opacity;
       intro.style.transform = `translateY(${translateY}px) scale(${scale})`;
+
+      if (introTitle) {
+        const maxShift = 160;
+        const translateX = maxShift * (1 - percent * 2);
+        introTitle.style.transform = `translateX(${translateX}px)`;
+      }
+
+      if (heroImage && altHeroSrc && baseHeroSrc) {
+        const nextSrc = percent > 0.18 ? altHeroSrc : baseHeroSrc;
+        if (heroImage.getAttribute("src") !== nextSrc) {
+          heroImage.setAttribute("src", nextSrc);
+        }
+      }
     });
   });
   document.addEventListener("DOMContentLoaded", () => {
